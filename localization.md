@@ -251,7 +251,8 @@ You may customize or intercept this behavior using the `handleMissingKeysUsing` 
         Lang::handleMissingKeysUsing(function (string $key, array $replacements, string $locale) {
             info("Missing translation key [$key] detected.");
 
-            return $key;
+            // For example, return a more presentable string than the dot separated key.
+            return str($key)->afterLast('.')->ucfirst();
         });
     }
 
